@@ -27,12 +27,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.BmiTheme
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BmiTheme {
+            BmiTheme  {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -49,13 +48,11 @@ class MainActivity : ComponentActivity() {
 fun Bmi(){
     var heightInput:String by remember{ mutableStateOf("")}
     var weightInput:String by remember{ mutableStateOf("")}
-    println("Recomposed: Height: $heightInput, Weight: $weightInput")
 
     val  height = heightInput.toFloatOrNull()?:0.0f
     val  weight = weightInput.toIntOrNull()?:0
-    println("Converted: Height: $height, Weight: $weight")
 
-    val bmi=if (weight>0 && height>0) weight/(height*height) else 0.0
+    val bmi=if (weight>0 && height>0) weight/(height*height) else 0.0f
 
 
     Column(
@@ -97,7 +94,5 @@ fun Bmi(){
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    BmiTheme {
-        Bmi()
-    }
+    Bmi()
 }
